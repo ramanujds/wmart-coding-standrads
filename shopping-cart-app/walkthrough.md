@@ -187,8 +187,66 @@ public class ExceptionHandlingExample {
 - Store product inventory using `HashMap`.
 - Implement a `Set` to track unique customers.
 
-## **Increment 4: Case Study - Shopping Cart System**
-### **4.1 Case Study Implementation**
+
+## **Increment 4: Maven & Unit Testing**
+### **4.1 Introduction to Maven**
+#### **Concept**
+- Maven is a build automation tool used in Java projects.
+- It manages dependencies, builds, and runs projects efficiently.
+
+#### **Example: Setting Up Maven**
+- Install Maven and create a `pom.xml` file with dependencies.
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.shoppingcart</groupId>
+    <artifactId>shopping-cart</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
+```
+
+#### **TODOs:**
+- Set up a Maven project for the shopping cart system.
+- Manage dependencies using `pom.xml`.
+
+### **4.2 Unit Testing with JUnit**
+#### **Concept**
+- JUnit is a framework for writing and running Java unit tests.
+- Helps validate the correctness of code.
+
+#### **Example: Writing a JUnit Test**
+```java
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class ProductTest {
+    @Test
+    public void testProductPrice() {
+        Product product = new Product();
+        product.setPrice(100.0);
+        assertEquals(100.0, product.getPrice(), 0);
+    }
+}
+```
+
+#### **TODOs:**
+- Write unit tests for `ShoppingCart` methods.
+- Implement test cases for exception handling.
+
+
+
+## **Final Case Study - Shopping Cart System**
+### **Case Study Implementation**
 #### **Concept**
 A complete shopping cart system using OOP, collections, and exception handling.
 
@@ -240,4 +298,11 @@ public class ShoppingCartSystem {
 - Implement a checkout system that calculates total cost and applies discounts.
 - Allow users to remove products from the cart.
 - Store order history using a `List`.
+- Add logging and error handling for a robust system.
+- Unit test the core functionalities of the shopping cart system.
+- Build the project using Maven and run it from the command line.
+- Document the project structure and usage in a README file.
+- Share the project on GitHub for collaboration and feedback.
+
+
 
