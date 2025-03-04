@@ -20,7 +20,7 @@ public class ProductExample {
         int quantity = 2;
         boolean inStock = true;
         
-        System.out.println("Product: " + productName);
+        System.out.println("Item: " + productName);
         System.out.println("Price: $" + price);
         System.out.println("Quantity Available: " + quantity);
         System.out.println("In Stock: " + inStock);
@@ -66,7 +66,7 @@ public class ShoppingCartExample {
                 System.out.println("Unknown category.");
         }
 
-        System.out.println("Product Price Breakdown:");
+        System.out.println("Item Price Breakdown:");
         for (int i = 1; i <= quantity; i++) {
             System.out.println("Item " + i + " Price: $" + price);
         }
@@ -93,17 +93,17 @@ class Product {
     double price;
     
     void displayProduct() {
-        System.out.println("Product: " + name + ", Price: " + price);
+        System.out.println("Item: " + name + ", Price: " + price);
     }
 }
 
 public class ProductTest {
     public static void main(String[] args) {
-        Product product1 = new Product();
-        product1.name = "Laptop";
-        product1.price = 800.50;
+        Product item1 = new Product();
+        item1.name = "Laptop";
+        item1.price = 800.50;
         
-        product1.displayProduct();
+        item1.displayProduct();
     }
 }
 ```
@@ -264,7 +264,7 @@ class Product {
     }
     
     public void displayProduct() {
-        System.out.println("Product: " + name + ", Price: " + price);
+        System.out.println("Item: " + name + ", Price: " + price);
     }
 }
 
