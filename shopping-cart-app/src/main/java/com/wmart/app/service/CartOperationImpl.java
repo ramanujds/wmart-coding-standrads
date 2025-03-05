@@ -4,51 +4,46 @@ package com.wmart.app.service;
 import com.wmart.app.exception.InvalidItemException;
 import com.wmart.app.exception.ItemNotFoundException;
 import com.wmart.app.model.Item;
+import com.wmart.app.repository.CartRepository;
+import com.wmart.app.repository.CartRepositoryImpl;
 
-public class CartOperationImpl implements CartOperation{
+import java.util.ArrayList;
+import java.util.List;
 
- //   int []arr = new int[10];
+public class CartOperationImpl implements CartOperation {
 
-    // arr[0], arr[1]
 
-    Item []itemArr = new Item[5];
-    int current = 0;
+    private CartRepository cartRepo = new CartRepositoryImpl();
 
     public void addItem(Item item) throws InvalidItemException {
         // Item name should not be null or blank
-        if (item.getName()==null || item.getName().isBlank()){
-            throw new InvalidItemException("")
+        if (item.getName() == null || item.getName().isBlank()) {
+            throw new InvalidItemException("Invalid Name");
         }
         // Price should not be less than or equal to zero
 
         // Throw InvalidItemException otherwise
 
-        itemArr[current] = item;
-        current++;
+        cartRepo.addItem(item);
     }
 
-    public void removeItem(String name) {
-
+    public void removeItem(String name) throws ItemNotFoundException {
+        cartRepo.removeItem(name);
     }
 
     public void updateQuantity(int quantity) {
 
     }
 
-    public void showAllItems(){
-        for (int index = 0; index<current; index++){
-            System.out.println(itemArr[index]);
+    public void showAllItems() {
+        var itemList = cartRepo.getAllItems();
+        for (Item item : itemList) {
+            System.out.println(item);
         }
     }
 
 
     public Item searchByName(String name) throws ItemNotFoundException {
-        for (int index = 0; index<current; index++){
-            Item currentItem = itemArr[index];
-            if(currentItem.getName().equalsIgnoreCase(name)){
-                return currentItem;
-            }
-        }
-        throw new ItemNotFoundException("Item with name '"+name+"' Not Found");
+        return cartRepo.findItemByName(name);
     }
 }

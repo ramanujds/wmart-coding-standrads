@@ -8,7 +8,7 @@ public interface CartOperation {
 
     void addItem(Item item) throws InvalidItemException;
 
-    void removeItem(String name);
+    void removeItem(String name) throws ItemNotFoundException;
 
     void updateQuantity(int quantity);
 

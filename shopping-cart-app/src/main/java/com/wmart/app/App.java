@@ -1,5 +1,6 @@
 package com.wmart.app;
 
+import com.wmart.app.exception.InvalidItemException;
 import com.wmart.app.exception.ItemNotFoundException;
 import com.wmart.app.model.Clothing;
 import com.wmart.app.model.Electronics;
@@ -20,14 +21,19 @@ public class App {
         Electronics item1 = new Electronics("Laptop", 45000, 2);
         Electronics item2 = new Electronics("Mobile", 15000, 1);
         Clothing item3 = new Clothing("Shirt", 1500, Size.LARGE, "Blue");
-        Clothing item4 = new Clothing("T-Shirt", 500, Size.MEDIUM, "Red");
+        Clothing item4 = new Clothing("", 500, Size.MEDIUM, "Red");
 
         CartOperation cart = new CartOperationImpl();
 
-        cart.addItem(item1);
-        cart.addItem(item2);
-        cart.addItem(item3);
-        cart.addItem(item4);
+        try {
+            cart.addItem(item1);
+            cart.addItem(item2);
+            cart.addItem(item3);
+            cart.addItem(item4);
+        }
+        catch (InvalidItemException ex){
+            System.out.println(ex.getMessage());
+        }
 
 //        cart.showAllItems();
 

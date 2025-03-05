@@ -46,11 +46,11 @@ Each method should perform a **single responsibility**.
 ❌ **Bad Example: A long method doing multiple tasks**
 ```java
 public void checkout() {
-    validateCart();
-    applyDiscounts();
-    calculateTax();
-    generateInvoice();
-    sendConfirmationEmail();
+    //  logic for validating Cart;
+    //  logic for applying Discounts;
+    //  logic for calculating Tax;
+    //  logic for generating Invoice;
+    //  logic for sending Confirmation Email;
 }
 ```
 
