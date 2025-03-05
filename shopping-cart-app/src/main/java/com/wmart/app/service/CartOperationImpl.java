@@ -1,6 +1,7 @@
 package com.wmart.app.service;
 
 
+import com.wmart.app.exception.InvalidItemException;
 import com.wmart.app.exception.ItemNotFoundException;
 import com.wmart.app.model.Item;
 
@@ -13,9 +14,13 @@ public class CartOperationImpl implements CartOperation{
     Item []itemArr = new Item[5];
     int current = 0;
 
-    public void addItem(Item item) {
+    public void addItem(Item item) throws InvalidItemException {
         // Item name should not be null or blank
+        if (item.getName()==null || item.getName().isBlank()){
+            throw new InvalidItemException("")
+        }
         // Price should not be less than or equal to zero
+
         // Throw InvalidItemException otherwise
 
         itemArr[current] = item;

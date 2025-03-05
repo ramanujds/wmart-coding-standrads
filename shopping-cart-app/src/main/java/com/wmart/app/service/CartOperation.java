@@ -1,11 +1,12 @@
 package com.wmart.app.service;
 
+import com.wmart.app.exception.InvalidItemException;
 import com.wmart.app.exception.ItemNotFoundException;
 import com.wmart.app.model.Item;
 
 public interface CartOperation {
 
-    void addItem(Item item);
+    void addItem(Item item) throws InvalidItemException;
 
     void removeItem(String name);
 
