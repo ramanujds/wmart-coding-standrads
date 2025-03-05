@@ -1,6 +1,7 @@
 package com.wmart.app.service;
 
 
+import com.wmart.app.exception.ItemNotFoundException;
 import com.wmart.app.model.Item;
 
 public class CartOperationImpl implements CartOperation{
@@ -13,6 +14,10 @@ public class CartOperationImpl implements CartOperation{
     int current = 0;
 
     public void addItem(Item item) {
+        // Item name should not be null or blank
+        // Price should not be less than or equal to zero
+        // Throw InvalidItemException otherwise
+
         itemArr[current] = item;
         current++;
     }
@@ -32,13 +37,13 @@ public class CartOperationImpl implements CartOperation{
     }
 
 
-    public Item searchByName(String name) {
+    public Item searchByName(String name) throws ItemNotFoundException {
         for (int index = 0; index<current; index++){
             Item currentItem = itemArr[index];
             if(currentItem.getName().equalsIgnoreCase(name)){
                 return currentItem;
             }
         }
-        return null;
+        throw new ItemNotFoundException("Item with name '"+name+"' Not Found");
     }
 }

@@ -1,5 +1,6 @@
 package com.wmart.app.service;
 
+import com.wmart.app.exception.ItemNotFoundException;
 import com.wmart.app.model.Item;
 
 public interface CartOperation {
@@ -12,6 +13,6 @@ public interface CartOperation {
 
     void showAllItems();
 
-    Item searchByName(String name);
+    Item searchByName(String name) throws ItemNotFoundException;
 
 }

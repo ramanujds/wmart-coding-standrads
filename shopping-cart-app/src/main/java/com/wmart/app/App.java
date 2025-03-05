@@ -1,5 +1,6 @@
 package com.wmart.app;
 
+import com.wmart.app.exception.ItemNotFoundException;
 import com.wmart.app.model.Clothing;
 import com.wmart.app.model.Electronics;
 import com.wmart.app.model.Item;
@@ -7,9 +8,14 @@ import com.wmart.app.model.Size;
 import com.wmart.app.service.CartOperation;
 import com.wmart.app.service.CartOperationImpl;
 
+import java.util.Scanner;
+import java.util.SortedMap;
+
 public class App {
 
     public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
 
         Electronics item1 = new Electronics("Laptop", 45000, 2);
         Electronics item2 = new Electronics("Mobile", 15000, 1);
@@ -25,8 +31,16 @@ public class App {
 
 //        cart.showAllItems();
 
-        Item item = cart.searchByName("watch");
-        System.out.println(item);
+        System.out.println("What are you looking for?");
+        String name = scan.next();
+        Item item;
+        try {
+            item = cart.searchByName(name);
+            System.out.println(item);
+        } catch (ItemNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+
 
 
     }
