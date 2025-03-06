@@ -6,8 +6,8 @@ public class Electronics extends Item{
 
     private int warranty;
 
-    public Electronics(String name, double price, int warranty) {
-        super(name, price);
+    public Electronics(int id, String name, double price, int warranty) {
+        super(id, name, price);
         this.warranty = warranty;
     }
 
@@ -22,6 +22,7 @@ public class Electronics extends Item{
     @Override
     public String toString() {
         return new StringJoiner(", ", Electronics.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
                 .add("warranty=" + warranty)
                 .add("name='" + name + "'")
                 .add("price=" + price)

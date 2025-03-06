@@ -2,23 +2,27 @@ package com.wmart.app.model;
 
 import java.util.StringJoiner;
 
-public abstract class Item {
+public abstract class Item  {
 
-   protected String name;
-   protected double price;
+    protected int id;
+    protected String name;
+    protected double price;
 
-    public Item(String name, double price) {
+    public Item() {
+    }
+
+    public Item(int id, String name, double price) {
+        this.id = id;
         this.name = name;
         this.price = price;
     }
 
-
-    public Item(){
-
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public Item(String name){
-        this.name=name;
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -34,17 +38,18 @@ public abstract class Item {
     }
 
     public void setPrice(double price) {
-        if (price<=0){
+        if (price <= 0) {
             System.err.println("Price cannot be zero or negative");
             return;
         }
         this.price = price;
     }
-    
+
 
     @Override
     public String toString() {
         return new StringJoiner(", ", Item.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
                 .add("name='" + name + "'")
                 .add("price=" + price)
                 .toString();

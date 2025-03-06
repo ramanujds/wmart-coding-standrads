@@ -3,6 +3,7 @@ package com.wmart.app.service;
 
 import com.wmart.app.exception.InvalidItemException;
 import com.wmart.app.exception.ItemNotFoundException;
+import com.wmart.app.model.Electronics;
 import com.wmart.app.model.Item;
 import com.wmart.app.repository.CartRepository;
 import com.wmart.app.repository.CartRepositoryImpl;
@@ -27,8 +28,8 @@ public class CartOperationImpl implements CartOperation {
         cartRepo.addItem(item);
     }
 
-    public void removeItem(String name) throws ItemNotFoundException {
-        cartRepo.removeItem(name);
+    public void removeItem(int id) throws ItemNotFoundException {
+        cartRepo.removeItem(id);
     }
 
     public void updateQuantity(int quantity) {
@@ -43,7 +44,25 @@ public class CartOperationImpl implements CartOperation {
     }
 
 
+    public List<Item> applyDiscountsOnElectronics(){
+        List<Item> allItems = cartRepo.getAllItems();
+        allItems.forEach(
+                item -> {
+                    if (item instanceof Electronics){
+                        item.setPrice(item.getPrice() * .9);
+                    }
+                }
+
+        );
+        return allItems;
+    }
+
     public Item searchByName(String name) throws ItemNotFoundException {
         return cartRepo.findItemByName(name);
+    }
+
+    @Override
+    public Item getItem(int id) throws ItemNotFoundException {
+        return cartRepo.findItem(id);
     }
 }

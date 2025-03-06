@@ -9,8 +9,8 @@ public class Clothing extends Item{
 
     private String color;
 
-    public Clothing(String name, double price, Size size, String color) {
-        super(name, price);
+    public Clothing(int id, String name, double price, Size size, String color) {
+        super(id, name, price);
         this.size = size;
         this.color = color;
     }
@@ -34,7 +34,8 @@ public class Clothing extends Item{
     @Override
     public String toString() {
         return new StringJoiner(", ", Clothing.class.getSimpleName() + "[", "]")
-                .add("size='" + size + "'")
+                .add("id=" + id)
+                .add("size=" + size)
                 .add("color='" + color + "'")
                 .add("name='" + name + "'")
                 .add("price=" + price)

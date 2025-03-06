@@ -8,9 +8,10 @@ import java.util.List;
 public interface CartRepository {
 
     Item addItem(Item item);
-    void removeItem(String name) throws ItemNotFoundException;
-    void updateItemQuantity(Item item, int quantity);
+    void removeItem(int name) throws ItemNotFoundException;
+    void updateItemQuantity(int id, int quantity);
     void clearCart();
     Item findItemByName(String name) throws ItemNotFoundException;
+    Item findItem(int id) throws ItemNotFoundException;
     List<Item> getAllItems();
 }
